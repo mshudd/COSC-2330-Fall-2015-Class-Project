@@ -1,0 +1,154 @@
+Kevin Bowen & Shane Marnell
+
+
+Dummy Classes for Group Project
+
+Employee (base class), Manager, and Waiter
+
+/*See the copy of this file on Blackboard to see mockup UML Class Diagram*/
+
+Employee (base class)
+(private) Property - EmployeeName
+(private) Property - EmployeeJob		//These top 3 get info from database,
+(private) Property - HoursWorked		//only manager can modify
+Property - EmployeeWage
+
+Method Login() // logs in. 
+Method Logout() // logs employee out
+
+Method RecordHoursWorked() //If we use timer to record hours 
+Method SetStartShiftTime()  //records beginning of shift time
+Method SetEndShiftTime() // records end of shift
+
+
+Interface: Manager
+(Manager also implements all other EmployeeJob interfaces)
+
+//Methods Access and Modify Employee Database
+
+Method - EditEmployeeName()     
+Method - EditEmployeeJob()
+Method - EditEmployeeWage()
+Method - EditHoursWorked()
+
+
+//Methods Access and Modify Menu Database
+
+Method -  AddMenuItem()
+Method - RemoveMenuItem()
+Method - EditIngredientPortion()
+Method-  EditMenuItemPrice()
+
+
+//Methods that Access or Modify the Schedule Database
+
+Method - EditSchedule()
+Method - ViewSchedule()
+
+
+//Methods Access Inventory Database
+
+Method - AddIngredient()
+Method - SubtractIngredient()
+
+
+//Methods Access or Modify Tickets Database
+
+Method - EditOrder()
+Method - GiveDiscount()
+
+
+//Methods that Access database and Generate Reports
+
+Method - TrackLaborCost_Rpt() //Tracks by hour. Prompts for report by month, week, day, or hour
+Method - MakeCustom_Rpt() //make custom report 
+Method - MenuItemProfits_Rpt()  //Gives money made from every menu item, minus the ingredient cost/waste.
+Method - FoodCost_Rpt()  //Show cost of food, including waste.
+Method- TotalTicketRevenue_Rpt()
+Method - TotalCost_Rpt()
+
+
+Interface - Waiter
+
+//Host can change green (open) table to yellow (occupied)
+//A Cook method can change yellow (occupied) to orange (food is ready)
+//Waiter can change orange (food is ready) to yellow (occupied)
+//Waiter can change yellow (occupied) to red (dirty, ticket paid, customers have left)
+//Busboy can change red (dirty) to green (open)
+
+//Can change table that is Orange(occupied, food is ready) to Yellow(occupied)
+//Can change table from Yellow(occupied) to Red(dirty, ticket paid, and customers have left)
+
+Method - MakeTableYellow() //Change table status. Only works if table is previously orange.
+Method - MakeTableRed() // Change table status. Only works if table is previously yellow.
+
+//ticket stuff
+
+Method - AddOrder()
+
+//How does the ticket get entered? By Waiter, or Host?
+
+
+OTHER MISCELLANEOUS INFORMATION
+Databases
+Inventory - ingredients
+Menu - list menu item, (modify) portions
+Employee - store password, wage, name, id, days worked
+Schedule - Store week, employees
+Completed Tickets
+
+
+Tracking Revenue
+(track food waste for food cost!)
+1). All Inventory must be entered.
+2.) All menu items must have a set measurement of inventory items
+
+
+Track Labor
+Divide employees into groups based on a pay rate
+Add the total number of hours worked in each group
+Multiply hourly rate by number of hours worked
+Divide by the day, week, month, year
+Add the total wages from each group
+
+Food Cost
+Inventory Value = IV
+
+Open Inventory Value + Cost of Purchases - Closing IV = Usage Amount
+
+Usage Amount / Sales = Cost
+
+
+Simplified Class Project Instructions (by Shane Marnell)
+Project Summary
+“This project develops a computerized system to help restaurant personnel coordinate their activities and improve their services, and for the management to track business growth and create future plans.”
+Project Description
+Touch screen to complete individual tasks for each EmployeeJob (Host, Waiter, Cook, Busboy, and Manager). Tables are represented by buttons. Colored based on status: Green is open, Yellow is occupied, Orange means food is ready for the table,  **SUGGESTION: Blue? means food has been delivered ** Red is dirty, ticket is paid, and customers have left.
+
+(Shane’s vision of the home screens for each role)
+
+The Host – See table layout. Can change any table from Green to Yellow.
+The Waiter – See table layout. Can change their assigned tables from Orange? to Red. Take orders on paper, then login to a terminal to place them in the system, which forwards the orders to the Cook. Can add menu items to the table’s tickets.
+The Cook – See queue (first-in, first-out list) of orders. Can send indication that an order is ready to be delivered (automatically updates the list of orders, automatically updates that table from Yellow to Orange).
+The Busboy - See table layout. Can change any table from Red to Green.
+The Manager - See table layout. Can change ALL status’ of ALL tables, and edit tickets(add/remove items, give discounts, etc.) for tables. Multiple menus for various other manager-only functions.
+
+“All home screens will be refreshed automatically when needed”
+Cook and Host are the only stationary roles.
+Logins are Username/Password
+
+“This project computerizes restaurant operation so that all information pertaining to patron's orders and staff activity will be conveniently shared and stored over the restaurant's intranet.
+...Most importantly, all of the restaurant information is organized and saved in the system database for the management viewing and archival. The analysis will consist of by-the-day and by-the-hour breakdowns of:
+Revenue and revenue percentage per menu item
+Menu item popularity
+Personnel efficiency	
+Average turnaround time (how long patrons spend in the restaurant) 	
+Average preparation time (time from when the order is placed to when it is 	ready)
+...All data is automatically collected and processed allowing management to focus on analyzing the data rather than calculating it.”
+
+
+Statement of Requirements
+We’re assuming all hardware running this program are stationary terminals. The Cook terminal will most likely be logged in all day. Possibly the Host as well? What about the Manager?
+Ideally, the final interface should allow for the manager to “alter the floor plan by moving, adding and removing tables. If the development team experiences lack of time in the course...an acceptable workaround should be sought. For example, a generic restaurant floor plan can be designed specifically for demo purposes. When a restaurant orders our software we will build and develop a floor plan for that specific establishment, making the software package unique to that establishment.”
+
+“In addition to staff coordination, the system tracks everything electronically then organizes it. Employee hours are kept, allowing for rapid processing of the payroll. Revenue is tracked by day, week, or month. All this information is collected, saved, and then entered into table format for easy reading by the management. The automatically generated statistics allow the management to see what portion of the revenue comes from what item, i.e., what are the most popular items. All this is done automatically and stays up to date with restaurant performance.”
