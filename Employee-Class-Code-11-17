@@ -1,0 +1,167 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace EmployeeClassLib
+{
+    public class Employee
+    {
+        //Person who wrote code has their name right next to code they wrote
+
+         public string EmployeeFirstName { get;  private set; } //Julie
+
+         public string EmployeeLastName { get;   private set; }  //Julie
+
+        //Employee Job determines user level of employee, and what features of the program
+        //they will have access to.
+        public string EmployeeJob { get; private set; }  //Shane
+
+        //EmployeeFirstName, EmployeeLastName, and EmployeeJob can only be changed by the Manager 
+        //when he accesses the database
+
+        //Determines if the Employee is clocked in currently
+        private bool clockedIn; //Danny
+
+        //Determines if Employee is on Break
+        private bool onBreak; //Danny 
+
+        private bool isLoggedIn; //Kevin
+
+        public void Login() //Kevin
+        {
+            //this method will incorporate databases later when we have access to the school computer
+
+            /*checks database to see if password entered by gui matches password in database
+            //if (password is correct)
+            //{
+                //set EmployeeFirstName, EmployeeLastName, and EmployeeJob to the one in the database
+                //set isLoggedIn var to true.
+
+              }
+            */
+            
+            //if the password is incorrect
+            //
+            //{
+            //  return false;
+            //  MessageBox.Show("That password is incorrect");
+            //}
+
+            
+        }
+
+        public void Logout() //Kevin
+        {
+            // logs employee out, displays login screen.
+            // In the gui, there will be a timer that invokes
+            // this method, and will log the employee out after 2
+            // minutes. The cook and the host and the manager
+            // will auto logout after 30 minutes. 
+            // Do not actually make the method invoke a log out after a 
+            // specific time. Just make the method log out. We will use a 
+            // timer to invoke this method after a certain period of time.
+        }
+
+
+
+
+        //Note: Instead of returning data, we might make ClockIn(), Clockout()
+        //StartBreak(), and EndBreak() methods write to database, once we learn
+        //that and can test it. If not we will make some methods that will write
+        //what is returned from these methods to the database.
+
+        public string ClockIn() //Danny
+        {
+            //return a timestamp of when the employee clocks in
+            if(clockedIn == false)
+            {
+                clockedIn = true;
+                MessageBox.Show("You are now clocked in");
+
+            }
+            //ClockIn button should be disabled when IsActive is equal to true.
+            return DateTime.Now.ToString();
+        }
+
+        public string ClockOut() //Danny
+        {
+            if(clockedIn == true)
+            {
+                clockedIn = false;
+                MessageBox.Show("You are now clocked out");
+            }
+            //return the timestamp of of when the employee clocks out
+            return DateTime.Now.ToString();
+        }
+
+        public string StartBreak() //Julie
+        {
+            //start break should be disabled if variable OnBreak = true
+            if(onBreak == false)
+            {
+                onBreak = true;
+                MessageBox.Show("You are now on break.");
+            }
+            //return the timestamp for when the employee starts their break
+            return DateTime.Now.ToString();
+        }
+        public string EndBreak() //Julie
+        {
+            if(onBreak == true)
+            {
+                //End Break Button should be disabled when the var OnBreak = false
+                onBreak = false;
+                MessageBox.Show("You have ended your break");
+            }
+            //return the timestamp for when the employee ends their break
+            return DateTime.Now.ToString();
+        }
+
+
+
+        public string ReturnDay() //Shane
+        {
+            //return the current day (not date, day)
+            string day = DateTime.Now.DayOfWeek.ToString();
+            return day;
+        }
+
+        public string ReturnDate() //Kevin
+        {
+            //return the current date
+            return DateTime.Now.Date.ToString();
+        }
+
+        public string ReturnTime()  //Kevin
+        {
+            //return the current time
+            return DateTime.Now.ToString("T");
+        }
+
+
+        public Employee(string fName, string lName, string job)
+        {
+            // The only constructor
+            // Populate fields by accessing database
+
+            // May modify later to take as parameters info that indicates
+            // the employee’s position in the database. Then the code
+            // accessing the database would be here rather than when the
+            // constructor is called.
+            EmployeeFirstName = fName;
+            EmployeeLastName = lName;
+            EmployeeJob = job;
+            clockedIn = false;
+            onBreak = false;
+            isLoggedIn = true;
+
+        }
+
+
+    }
+
+
+}
