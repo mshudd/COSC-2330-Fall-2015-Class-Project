@@ -1,0 +1,172 @@
+green - open/awaiting customers
+yellow - occupied
+orange - Food is ready
+Red - Table is dirty, customer has paid and left
+Blue - Food has been served
+
+
+Remember to make interfaces of all these methods and have each class inherit the correct interface.
+
+Busboy
+date altered 11/17/2015
+//colors are equivalent to numbers
+//tables all start at 0
+//manager changes tables to broken
+//green-1 yellow-2 orange-3 red-4 blue-5 Broken - (-1) 
+
+//Danny, Julie, and Kevin 
+//Should Change color from red(dirty) to green(clean/open)
+public ChangeToOpen(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == red)
+    {
+        tableArray[tableNumber] = green;
+    }
+    else
+    {
+        Messagebox.Show(“Error, Cannot Change Table.”);
+    }
+}
+
+
+
+Host
+date altered 11/17/2015
+//colors are equivalent to numbers
+//tables all start at 0
+//green-1 yellow-2 orange-3 red-4 blue-5 Broken - (-1) 
+
+//Can change a green(open) to yellow(occupied)
+
+//Danny, Julie, and Kevin 
+//Should Change color from green to yellow
+public bool ChangeToOccupied(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == green)
+    {
+        tableArray[tableNumber] = yellow;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+// Danny
+//Assign party to table
+public void PartyToTable()
+{
+    //Party variable
+    //TableArray
+    //Look for green tables
+    //call ChangeToOccupied to turn table yellow
+}
+
+public bool ChangeToOccupied(int tableNumber)
+        {
+            string rawPartySize = "";
+            int partySize = 0;
+
+            Console.WriteLine("Enter the size of the people.");
+            rawPartySize = Console.ReadLine();
+            if(int.TryParse(rawPartySize, out partySize))
+            {
+                // parsing successful.
+                int[] tableArray = new int[20];
+                for (int i = 0; i < 20; )
+                {
+                    if (tableArray[tableNumber] == 1)
+                    {
+                        tableArray[tableNumber] = 2;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+
+
+
+Waiter
+date altered 11/17/2015
+//Can split ticket
+//Finalizes ticket
+//colors are equivalent to numbers
+//tables all start at 0
+//green-1 yellow-2 orange-3 red-4 blue-5 Broken - (-1) 
+
+
+//Make a table that is orange(food done in kitchen) to yellow
+//Danny, Julie, and Kevin 
+public ServedFood(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == orange)
+    {
+        tableArray[tableNumber] = yellow;
+    }
+    else
+    {
+        Messagebox.Show(“Error, Cannot Change Table.”);
+    }
+}
+
+//Turn a yellow table (has guests) to red (dirty, needs cleaning)
+//Danny, Julie, and Kevin 
+public ChangeToDirty(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == yellow)
+    {
+        tableArray[tableNumber] = red;
+    }
+    else
+    {
+        Messagebox.Show(“Error, Cannot Change Table.”);
+    }
+}
+
+//Danny, Julie, and Kevin & Shane
+public FoodServed(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == orange)
+    {
+        tableArray[tableNumber] = blue;
+    }
+    else
+    {
+        Messagebox.Show(“Error, Cannot Change Table.”);
+    }
+}
+
+
+
+//Give an occupied table a ticket.
+
+
+Cook
+date altered 11/17/2015
+//Change a yellow table to Orange
+//DONT FORGET TO LOOK UP QUEUE CLASS (if worse comes to worse ask Higgs) FOR THIS METHOD
+//The Cook – See queue (first-in, first-out list) of orders.
+//green-1 yellow-2 orange-3 red-4 blue-5 Broken - (-1) 
+
+//Danny, Julie, and Kevin 
+public ShowFoodIsReady(int tableNumber)
+{
+    tableArray[];
+    if(tableArray[tableNumber] == yellow)
+    {
+        tableArray[tableNumber] = orange;
+    }
+    else
+    {
+        Messagebox.Show(“Error, Cannot Change Table.”);
+    }
+}
