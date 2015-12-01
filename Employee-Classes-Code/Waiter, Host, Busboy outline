@@ -16,16 +16,17 @@ date altered 11/17/2015
 
 //Danny, Julie, and Kevin 
 //Should Change color from red(dirty) to green(clean/open)
-public ChangeToOpen(int tableNumber)
+public bool ChangeToOpen(Table table)
 {
-    tableArray[];
-    if(tableArray[tableNumber] == red)
+    
+    if(table.TableStatus == 0 || table.TableStatus == 5)
     {
-        tableArray[tableNumber] = green;
+        table.TableStatus = 1;
+        return true;
     }
     else
     {
-        Messagebox.Show(“Error, Cannot Change Table.”);
+        return false;
     }
 }
 
@@ -41,12 +42,12 @@ date altered 11/17/2015
 
 //Danny, Julie, and Kevin 
 //Should Change color from green to yellow
-public bool ChangeToOccupied(int tableNumber)
+public bool ChangeToOccupied(Table table)
 {
-    tableArray[];
-    if(tableArray[tableNumber] == green)
+    
+    if(table.TableStatus == 1)
     {
-        tableArray[tableNumber] = yellow;
+        table.TableStatus = 2;
         return true;
     }
     else
@@ -56,38 +57,20 @@ public bool ChangeToOccupied(int tableNumber)
 }
 // Danny
 //Assign party to table
-public void PartyToTable()
+public void PartyToTable(int partySize, Table table)
 {
     //Party variable
-    //TableArray
+    
     //Look for green tables
     //call ChangeToOccupied to turn table yellow
+    
+    if(table.TableStatus == 1)
+    {
+        table.PartyNumber = partySize;
+    }
+    ChangeToOccupied(table);
 }
 
-public bool ChangeToOccupied(int tableNumber)
-        {
-            string rawPartySize = "";
-            int partySize = 0;
-
-            Console.WriteLine("Enter the size of the people.");
-            rawPartySize = Console.ReadLine();
-            if(int.TryParse(rawPartySize, out partySize))
-            {
-                // parsing successful.
-                int[] tableArray = new int[20];
-                for (int i = 0; i < 20; )
-                {
-                    if (tableArray[tableNumber] == 1)
-                    {
-                        tableArray[tableNumber] = 2;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
 
 
 
@@ -103,16 +86,17 @@ date altered 11/17/2015
 
 //Make a table that is orange(food done in kitchen) to yellow
 //Danny, Julie, and Kevin 
-public ServedFood(int tableNumber)
+public bool ServedFood(Table table)
 {
-    tableArray[];
-    if(tableArray[tableNumber] == orange)
+    
+    if(table.TableStatus == 3)
     {
-        tableArray[tableNumber] = yellow;
+        table.TableNumber = 4;
+        return true;
     }
     else
     {
-        Messagebox.Show(“Error, Cannot Change Table.”);
+        return false;
     }
 }
 
